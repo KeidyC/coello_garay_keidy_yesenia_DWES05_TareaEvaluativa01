@@ -94,7 +94,7 @@ class CategoriaController extends Controller
     public function updateCategoria(Request $request, $id){
         try {
             $validarDatos = $request->validate([
-                'nombre_categoria' => 'required|string|max:255',
+                'nombre_categoria' => 'nullable|string|max:255',
                 'descripcion' => 'nullable|string|max:255',
             ]);
            

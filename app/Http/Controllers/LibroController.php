@@ -99,11 +99,11 @@ class LibroController extends Controller
     public function updateLibro(Request $request, $id){
         try {
             $validarDatos = $request->validate([
-                'titulo' => 'required|string|max:255',
-                'precio' => 'required|numeric|min:0',
-                'stock' => 'required|integer|min:0',
-                'id_categoria' => 'required|exists:categorias,id_categoria',
-                'id_autor' => 'required|exists:autores,id_autor',
+                'titulo' => 'nullable|string|max:255',
+                'precio' => 'nullable|numeric|min:0',
+                'stock' => 'nullable|integer|min:0',
+                'id_categoria' => 'nullable|exists:categorias,id_categoria',
+                'id_autor' => 'nullable|exists:autores,id_autor',
             ]);
 
             $libro = Libro::findOrFail($id);

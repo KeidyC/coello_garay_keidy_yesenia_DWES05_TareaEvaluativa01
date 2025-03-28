@@ -74,12 +74,8 @@ class AutorController extends Controller
                 'fecha_nacimiento' => 'nullable|date',
             ]);
 
-            $autor = Autor::create([
-                'nombre_autor' => $validarDatos['nombre_autor'],
-                'nacionalidad' => $validarDatos['nacionalidad'],
-                'fecha_nacimiento' => $validarDatos['fecha_nacimiento'],               
-            ]);
-    
+            $autor = Autor::create($validarDatos);
+
             return ApiResponseHelper::apiResponse(
                 'success',
                 201,
@@ -99,9 +95,9 @@ class AutorController extends Controller
     public function updateAutor(Request $request, $id){
         try {
             $validarDatos = $request->validate([
-                'nombre_autor' => 'required|string|max:255',
+                'nombre_autor' => 'nullable|string|max:255',
                 'nacionalidad' => 'nullable|string|max:255',
-                'fecha_nacimiento' => 'required|date',
+                'fecha_nacimiento' => 'nullable|date',
             ]);
           
             $autor = Autor::find($id);
